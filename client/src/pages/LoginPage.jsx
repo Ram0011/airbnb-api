@@ -13,7 +13,7 @@ export default function LoginPage() {
         e.preventDefault();
         try {
             const userInfo = await axios.post(
-                "https://airbnb-7n5y.onrender.com/login",
+                "https://airbnb-api-topaz.vercel.app/login",
                 {
                     email,
                     password,

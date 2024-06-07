@@ -9,7 +9,7 @@ export default function BookingsPage() {
 
     useEffect(() => {
         axios
-            .get("https://airbnb-7n5y.onrender.com/bookings")
+            .get("https://airbnb-api-topaz.vercel.app/bookings")
             .then((response) => {
                 setBookings(response.data);
             });
@@ -29,7 +29,7 @@ export default function BookingsPage() {
                             >
                                 <div className="w-48 ">
                                     <img
-                                        src={`https://airbnb-7n5y.onrender.com/uploads/${booking.place.photos[0]}`}
+                                        src={`https://airbnb-api-topaz.vercel.app/uploads/${booking.place.photos[0]}`}
                                         alt="photo0"
                                     />
                                 </div>

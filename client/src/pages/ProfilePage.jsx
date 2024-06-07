@@ -15,7 +15,7 @@ export default function ProfilePage() {
     }
 
     async function logout() {
-        await axios.post("https://airbnb-7n5y.onrender.com/logout");
+        await axios.post("https://airbnb-api-topaz.vercel.app/logout");
         alert("Logout Successful!");
         setRedirect("/");
         window.location.reload();

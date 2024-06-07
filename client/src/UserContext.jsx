@@ -12,7 +12,7 @@ export function UserContextProvider({ children }) {
         const fun = async () => {
             if (!user) {
                 await axios
-                    .get("https://airbnb-7n5y.onrender.com/profile")
+                    .get("https://airbnb-api-topaz.vercel.app/profile")
                     .then(({ data }) => {
                         // console.log(data.message);
                         if (data.message === "Unauthorized") {

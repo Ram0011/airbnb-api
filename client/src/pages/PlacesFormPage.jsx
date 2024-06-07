@@ -25,7 +25,7 @@ export default function PlacesFormPage() {
             return;
         }
         axios
-            .get(`https://airbnb-7n5y.onrender.com/places/${id}`)
+            .get(`https://airbnb-api-topaz.vercel.app/places/${id}`)
             .then((response) => {
                 const { data } = response;
                 setTitle(data.title);
@@ -58,7 +58,7 @@ export default function PlacesFormPage() {
         if (id) {
             // update
             try {
-                await axios.put("https://airbnb-7n5y.onrender.com/places", {
+                await axios.put("https://airbnb-api-topaz.vercel.app/places", {
                     id,
                     ...placeData,
                 });
@@ -69,7 +69,7 @@ export default function PlacesFormPage() {
         } else {
             try {
                 await axios.post(
-                    "https://airbnb-7n5y.onrender.com/places",
+                    "https://airbnb-api-topaz.vercel.app/places",
                     placeData
                 );
                 setRedirect(true);

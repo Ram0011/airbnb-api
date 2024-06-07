@@ -14,7 +14,7 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
 
         try {
             const { data: filename } = await axios.post(
-                "https://airbnb-7n5y.onrender.com/upload-by-link",
+                "https://airbnb-api-topaz.vercel.app/upload-by-link",
                 { link: photoLink }
             );
             onChange((prev) => {
@@ -38,7 +38,7 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
 
         try {
             const res = await axios.post(
-                "https://airbnb-7n5y.onrender.com/upload",
+                "https://airbnb-api-topaz.vercel.app/upload",
                 data,
                 {
                     headers: { "Content-type": "multipart/form-data" },
@@ -90,7 +90,7 @@ export default function PhotosUploder({ addedPhotos, onChange }) {
                         <div key={link} className="flex w-40 relative">
                             <img
                                 className="rounded-2xl h-auto w-full"
-                                src={`https://airbnb-7n5y.onrender.com/uploads/${link}`}
+                                src={`https://airbnb-api-topaz.vercel.app/uploads/${link}`}
                             />
                             <button
                                 className="absolute bottom-1 right-1 text-white bg-black p-2 rounded-xl bg-opacity-50 cursor-pointer"

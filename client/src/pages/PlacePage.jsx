@@ -14,7 +14,7 @@ export default function PlacePage() {
             return;
         }
         axios
-            .get(`https://airbnb-7n5y.onrender.com/places/${id}`)
+            .get(`https://airbnb-api-topaz.vercel.app/places/${id}`)
             .then((response) => {
                 setPlace(response.data);
             });

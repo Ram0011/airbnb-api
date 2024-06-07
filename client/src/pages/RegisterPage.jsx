@@ -11,7 +11,7 @@ export default function RegisterPage() {
         ev.preventDefault();
         try {
             const ans = await axios.post(
-                "https://airbnb-7n5y.onrender.com/register",
+                "https://airbnb-api-topaz.vercel.app/register",
                 {
                     name,
                     email,

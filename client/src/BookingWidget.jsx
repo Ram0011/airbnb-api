@@ -53,7 +53,7 @@ export default function BookingWidget({ place }) {
                 price: numberOfNights * place.price,
             };
             const response = await axios.post(
-                "https://airbnb-7n5y.onrender.com/bookings",
+                "https://airbnb-api-topaz.vercel.app/bookings",
                 data
             );
             console.log(response.data);

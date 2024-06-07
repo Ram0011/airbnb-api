@@ -11,7 +11,7 @@ export default function BookingPage() {
     useEffect(() => {
         if (id) {
             axios
-                .get(`https://airbnb-7n5y.onrender.com/bookings`)
+                .get(`https://airbnb-api-topaz.vercel.app/bookings`)
                 .then((response) => {
                     const foundBooking = response.data.find(
                         ({ _id }) => _id === id

@@ -10,7 +10,7 @@ export default function PlacesPage() {
 
     useEffect(() => {
         axios
-            .get("https://airbnb-7n5y.onrender.com/user-places")
+            .get("https://airbnb-api-topaz.vercel.app/user-places")
             .then(({ data }) => {
                 setPlaces(data);
             });
@@ -53,7 +53,7 @@ export default function PlacesPage() {
                                 {place.photos.length > 0 && (
                                     <img
                                         className="w-full h-full object-cover rounded-xl"
-                                        src={`https://airbnb-7n5y.onrender.com/uploads/${place.photos[0]}`}
+                                        src={`https://airbnb-api-topaz.vercel.app/uploads/${place.photos[0]}`}
                                         alt="photo"
                                     />
                                 )}
