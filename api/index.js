@@ -38,14 +38,14 @@ app.use(cookieParser());
 //connect to db
 mongoose
     .connect(process.env.MONGO_URI)
-    .then(console.log("Database Connected!"));
+    .then(() => console.log("Database Connected!"));
 
 //global functions
 function getUserDataFromReq(req) {
-    return Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const { token } = req.cookies;
         jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-            if (err) throw err;
+            if (err) reject(err);
             resolve(userData);
         });
     });
@@ -143,17 +143,18 @@ app.post("/upload-by-link", async (req, res) => {
     res.json(newName);
 });
 
-const photosMiddleware = multer({ dest: "uploads/" });
+// Multer configuration to use /tmp directory
+const photosMiddleware = multer({ dest: "/tmp" });
 app.post("/upload", photosMiddleware.array("photos", 100), async (req, res) => {
-    const newName = "photo" + Date.now() + ".jpg";
     const uploadedFiles = req.files.map((file) => {
-        // const fileName = path.basename(file.path);
-        const newFilePath = path.join("uploads/", newName);
+        const newFileName =
+            "photo" + Date.now() + path.extname(file.originalname);
+        const newFilePath = path.join(__dirname, "uploads", newFileName);
 
-        // Rename the file
+        // Move the file from /tmp to /uploads
         fs.renameSync(file.path, newFilePath);
 
-        return newName; // Return only the new file name
+        return newFileName; // Return the new file name
     });
     res.json(uploadedFiles);
 });
@@ -240,7 +241,6 @@ app.put("/places", async (req, res) => {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
         if (err) throw err;
         const placeDoc = await Place.findById(id);
-        // console.log(placeDoc.owner.toString() === userData.id);
         if (placeDoc.owner.toString() === userData.id) {
             placeDoc.set({
                 title,
